@@ -22,7 +22,7 @@ var PORT_AVAILABILITY = 5001;
 var PORT_PHOTOS = 5005;
 var PORT_USERS = 5007;
 var PORT_SUMMARY = 5002;
-var USE_LOCAL = false;
+var USE_LOCAL = true;
 // var AXIOS_TIMEOUT = 100000;
 
 // var source = CancelToken.source();
@@ -45,101 +45,101 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use('/rooms/:id', express.static(__dirname + '/../client/dist'));
 
 
-app.get('/header.js', (req, res, next) => {
-  console.log('requesting header bundle');
-  axios.get('https://fec-gnocchi-user-profile.s3-us-west-2.amazonaws.com/header.js')
-  .then( (headerBundle) => {
-    console.log('got a request to header bundle');
-    res.send(headerBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting header bundle');
-    res.sendStatus(404);
-  })
-})
+// app.get('/header.js', (req, res, next) => {
+//   console.log('requesting header bundle');
+//   axios.get('https://fec-gnocchi-user-profile.s3-us-west-2.amazonaws.com/header.js')
+//   .then( (headerBundle) => {
+//     console.log('got a request to header bundle');
+//     res.send(headerBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting header bundle');
+//     res.sendStatus(404);
+//   })
+// })
 
-app.get('/title-service.js', (req, res, next) => {
-  console.log('requesting header bundle');
-  axios.get('https://react-bundles.s3.us-east-2.amazonaws.com/title-service.js')
-  .then( (titleBundle) => {
-    console.log('got a request to title bundle');
-    res.send(titleBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting title bundle');
-    res.sendStatus(404);
-  })
-})
+// app.get('/title-service.js', (req, res, next) => {
+//   console.log('requesting header bundle');
+//   axios.get('https://react-bundles.s3.us-east-2.amazonaws.com/title-service.js')
+//   .then( (titleBundle) => {
+//     console.log('got a request to title bundle');
+//     res.send(titleBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting title bundle');
+//     res.sendStatus(404);
+//   })
+// })
 
-app.get('/footer.js', (req, res, next) => {
-  console.log('requesting footer bundle');
-  axios.get('https://footer-bundle.s3-us-west-2.amazonaws.com/footer.js')
-  .then( (footerBundle) => {
-    console.log('got a request to footer bundle');
-    res.send(footerBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting footer bundle');
-    res.sendStatus(404);
-  })
-})
+// app.get('/footer.js', (req, res, next) => {
+//   console.log('requesting footer bundle');
+//   axios.get('https://footer-bundle.s3-us-west-2.amazonaws.com/footer.js')
+//   .then( (footerBundle) => {
+//     console.log('got a request to footer bundle');
+//     res.send(footerBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting footer bundle');
+//     res.sendStatus(404);
+//   })
+// })
 
-app.get('/places.js', (req, res, next) => {
-  console.log('requesting more places bundle');
-  axios.get('https://fec-gnocchi-user-profile.s3-us-west-2.amazonaws.com/places.js')
-  .then( (placesBundle) => {
-    console.log('got a request to more places bundle');
-    res.send(placesBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting more places bundle');
-    res.sendStatus(404);
-  })
-})
+// app.get('/places.js', (req, res, next) => {
+//   console.log('requesting more places bundle');
+//   axios.get('https://fec-gnocchi-user-profile.s3-us-west-2.amazonaws.com/places.js')
+//   .then( (placesBundle) => {
+//     console.log('got a request to more places bundle');
+//     res.send(placesBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting more places bundle');
+//     res.sendStatus(404);
+//   })
+// })
 
-app.get('/bundle_availability.js', (req, res, next) => {
-  console.log('requesting availability bundle');
-  axios.get('https://availability-bundle.s3-us-west-2.amazonaws.com/bundle_availability.js')
-  .then( (availabilityBundle) => {
-    console.log('got a request to availability bundle');
-    res.send(availabilityBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting availability bundle');
-    res.sendStatus(404);
-  })
-})
+// app.get('/bundle_availability.js', (req, res, next) => {
+//   console.log('requesting availability bundle');
+//   axios.get('https://availability-bundle.s3-us-west-2.amazonaws.com/bundle_availability.js')
+//   .then( (availabilityBundle) => {
+//     console.log('got a request to availability bundle');
+//     res.send(availabilityBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting availability bundle');
+//     res.sendStatus(404);
+//   })
+// })
 
-app.get('/summary.js', (req, res, next) => {
-  console.log('requesting summary bar bundle');
-  axios.get('https://summarybundle-mockairbnb.s3-us-west-2.amazonaws.com/summary.js')
-  .then( (summaryBundle) => {
-    console.log('got a request to summary bundle');
-    res.send(summaryBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting summary bundle');
-    res.sendStatus(404);
-  })
-})
+// app.get('/summary.js', (req, res, next) => {
+//   console.log('requesting summary bar bundle');
+//   axios.get('https://summarybundle-mockairbnb.s3-us-west-2.amazonaws.com/summary.js')
+//   .then( (summaryBundle) => {
+//     console.log('got a request to summary bundle');
+//     res.send(summaryBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting summary bundle');
+//     res.sendStatus(404);
+//   })
+// })
 
-app.get('/users.js', (req, res, next) => {
-  console.log('requesting users bundle');
-  axios.get('https://fec-gnocchi-user-profile.s3-us-west-2.amazonaws.com/users.js')
-  .then( (usersBundle) => {
-    console.log('got a request to users bundle');
-    res.send(usersBundle.data);
-  })
-  .catch((err) => {
-    console.log(err, 'error getting users bundle');
-    res.sendStatus(404);
+// app.get('/users.js', (req, res, next) => {
+//   console.log('requesting users bundle');
+//   axios.get('https://fec-gnocchi-user-profile.s3-us-west-2.amazonaws.com/users.js')
+//   .then( (usersBundle) => {
+//     console.log('got a request to users bundle');
+//     res.send(usersBundle.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'error getting users bundle');
+//     res.sendStatus(404);
 
-  })
-})
+//   })
+// })
 
-app.get('/photos-service-v2.js', (req, res, next) => {
+app.get('/photos-service.js', (req, res, next) => {
   console.log('requesting photos bundle');
-  axios.get('https://react-bundles.s3.us-east-2.amazonaws.com/photos-service-v2.js')
+  axios.get(`http://localhost:${PORT_PHOTOS}/photos-service.js`)
   .then( (photosBundle) => {
     console.log('got a request to photos bundle');
     res.send(photosBundle.data);
@@ -151,51 +151,51 @@ app.get('/photos-service-v2.js', (req, res, next) => {
   })
 })
 
-app.get('/rooms/:id/availableDates', (req, res) => {
-  axios.get(`${AVAILABILITY_API_URL}/rooms/${req.params.id}/availableDates`)
-  .then( (availableDatesRes) => {
-    res.send(availableDatesRes.data);
-  })
-  .catch( (err) => {
-    console.log(err, 'could not GET available dates');
-    res.send(exampleAvailableDates.exampleData);
-  })
-});
+// app.get('/rooms/:id/availableDates', (req, res) => {
+//   axios.get(`${AVAILABILITY_API_URL}/rooms/${req.params.id}/availableDates`)
+//   .then( (availableDatesRes) => {
+//     res.send(availableDatesRes.data);
+//   })
+//   .catch( (err) => {
+//     console.log(err, 'could not GET available dates');
+//     res.send(exampleAvailableDates.exampleData);
+//   })
+// });
 
-app.get('/rooms/:id/minNightlyRate', (req, res) => {
-  axios.get(`${AVAILABILITY_API_URL}/rooms/${req.params.id}/minNightlyRate`)
-  .then( (minRateRes) => {
-    res.send(minRateRes.data);
-  })
-  .catch((err) => {
-    console.log(err, 'could not GET nightly rate');
-    res.send({minNightlyRate: 434});
-  })
-})
+// app.get('/rooms/:id/minNightlyRate', (req, res) => {
+//   axios.get(`${AVAILABILITY_API_URL}/rooms/${req.params.id}/minNightlyRate`)
+//   .then( (minRateRes) => {
+//     res.send(minRateRes.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'could not GET nightly rate');
+//     res.send({minNightlyRate: 434});
+//   })
+// })
 
-app.get('/users/:id/', (req, res) => {
-  axios.get(`${USERS_API_URL}/users/${req.params.id}`)
-  .then( (usersRes) => {
-    res.send(usersRes.data);
-  })
-  .catch((err) => {
-    console.log(err)
-    console.log('could not GET user data');
-    res.send(exampleUser.exampleUser);
-  })
-})
+// app.get('/users/:id/', (req, res) => {
+//   axios.get(`${USERS_API_URL}/users/${req.params.id}`)
+//   .then( (usersRes) => {
+//     res.send(usersRes.data);
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//     console.log('could not GET user data');
+//     res.send(exampleUser.exampleUser);
+//   })
+// })
 
 
-app.get('/rooms/:id/summary', (req, res) => {
-  axios.get(`${SUMMARY_API_URL}/rooms/${req.params.id}/summary`)
-  .then( (summaryRes) => {
-    res.send(summaryRes.data);
-  })
-  .catch((err) => {
-    console.log(err, 'could not GET summary info');
-    res.send(exampleSummary.exampleSummary);
-  })
-})
+// app.get('/rooms/:id/summary', (req, res) => {
+//   axios.get(`${SUMMARY_API_URL}/rooms/${req.params.id}/summary`)
+//   .then( (summaryRes) => {
+//     res.send(summaryRes.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'could not GET summary info');
+//     res.send(exampleSummary.exampleSummary);
+//   })
+// })
 
 app.get('/rooms/:id/getPhotosByRoomId', (req, res) => {
   axios.get(`${PHOTOS_API_URL}/rooms/${req.params.id}/getPhotosByRoomId`)
@@ -208,28 +208,28 @@ app.get('/rooms/:id/getPhotosByRoomId', (req, res) => {
   })
 })
 
-app.get('/places/:id', (req, res) => {
-  axios.get(`${MORE_PLACES_API_URL}/places/${req.params.id}`)
-  .then( (placesRes) => {
-    res.send(placesRes.data);
-  })
-  .catch((err) => {
-    console.log(err, 'could not GET more places')
-    res.send(exampleMorePlaces);
-  })
-})
+// app.get('/places/:id', (req, res) => {
+//   axios.get(`${MORE_PLACES_API_URL}/places/${req.params.id}`)
+//   .then( (placesRes) => {
+//     res.send(placesRes.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'could not GET more places')
+//     res.send(exampleMorePlaces);
+//   })
+// })
 
-app.get('/rooms/:id/title', (req, res) => {
-  axios.get(`${TITLE_API_URL}/rooms/${req.params.id}/title`)
-  .then( (titleRes) => {
-    res.send(titleRes.data);
-    console.log('SENDING TITLE: ', titleRes.data);
-  })
-  .catch((err) => {
-    console.log(err, 'could not GET title')
-    res.send(exampleTitle);
-  })
-});
+// app.get('/rooms/:id/title', (req, res) => {
+//   axios.get(`${TITLE_API_URL}/rooms/${req.params.id}/title`)
+//   .then( (titleRes) => {
+//     res.send(titleRes.data);
+//     console.log('SENDING TITLE: ', titleRes.data);
+//   })
+//   .catch((err) => {
+//     console.log(err, 'could not GET title')
+//     res.send(exampleTitle);
+//   })
+// });
 
 console.log(`listening on port ${PORT}`);
 app.listen(PORT);
