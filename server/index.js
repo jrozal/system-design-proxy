@@ -3,12 +3,15 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
 var axios = require('axios');
+const app = express();
 //const CancelToken = axios.CancelToken;
 require('dotenv');
+require('newrelic');
 
 
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 var exampleAvailableDates = require('./exampleData/exampleAvailableDates.js');
 var examplePhotos = require('./exampleData/examplePhotos.js');
@@ -38,7 +41,7 @@ SUMMARY_API_URL = USE_LOCAL ? `http://localhost:${PORT_SUMMARY}` : `http://ec2-5
 MORE_PLACES_API_URL = USE_LOCAL ? '' : `http://ec2-54-203-153-69.us-west-2.compute.amazonaws.com:5008`;
 TITLE_API_URL = USE_LOCAL ? '' : `http://ec2-18-191-199-80.us-east-2.compute.amazonaws.com:5006`;
 
-var app = express();
+
 app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 
@@ -206,6 +209,15 @@ app.get('/rooms/:id/getPhotosByRoomId', (req, res) => {
     console.log(err, 'could not GET photos by room id')
     res.send(examplePhotos.examplePhotos);
   })
+})
+
+app.post('/rooms/:id/addPhotosByRoomID', (req, res) => {
+  axios.post(`${PHOTOS_API_URL}/rooms/${req.params.id}/addPhotosByRoomID`, req.body)
+    .then(data => res.send(data.data))
+    .catch(err => {
+      console.log('could not POST photo data', err)
+      res.status(500)
+    })
 })
 
 // app.get('/places/:id', (req, res) => {
