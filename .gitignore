@@ -6,3 +6,5 @@ package-lock.json
 *2.woff2
 *2.woff
 *.log
+*.sh
+*.pem
