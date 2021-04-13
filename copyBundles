@@ -1,9 +1,0 @@
-#copy fonts
-cp ../../user/user-service/public/*.woff2 ./client/dist/
-cp ../../availability/availability-service/client/dist/fonts/* ./client/dist/fonts/
-cp ../../summaryBar/summary-service/client/dist/fonts-summary/* ./client/dist/fonts-summary/
-#copy bundles
-cp ../../user/user-service/public/users.js ./client/dist/users.js
-cp ../../availability/availability-service/client/dist/bundle_availability.js ./client/dist/bundle_availability.js
-cp ../../photos/photos-service/client/dist/photos-service.js ./client/dist/
-cp ../../summaryBar/summary-service/client/dist/summary.js ./client/dist/

@@ -1,7 +1,8 @@
 node_modules
-client/dist/bundle.js
+client/dist/
 package-lock.json
 .env
 *2.js
 *2.woff2
 *2.woff
+*.log
