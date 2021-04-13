@@ -1,34 +1,27 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var path = require('path');
-var axios = require('axios');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
+const axios = require('axios');
 const app = express();
 //const CancelToken = axios.CancelToken;
 require('dotenv');
 require('newrelic');
 
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
+app.use(express.static(__dirname + '/../client'));
+app.use('/rooms/:id', express.static(__dirname + '/../client'));
 
-var exampleAvailableDates = require('./exampleData/exampleAvailableDates.js');
-var examplePhotos = require('./exampleData/examplePhotos.js');
-var exampleUser = require('./exampleData/exampleUser.js');
-var exampleSummary = require('./exampleData/exampleSummary.js');
-var exampleMorePlaces = require('./exampleData/exampleMorePlaces.js');
-var exampleTitle = require('./exampleData/exampleTitle.js');
+const PORT = 5000;
+const PORT_AVAILABILITY = 5001;
+const PORT_PHOTOS = 5005;
+const PORT_USERS = 5007;
+const USE_LOCAL = false;
+// const AXIOS_TIMEOUT = 100000;
 
-var PORT = 5000;
-var PORT_AVAILABILITY = 5001;
-var PORT_PHOTOS = 5005;
-var PORT_USERS = 5007;
-var PORT_SUMMARY = 5002;
-var USE_LOCAL = false;
-// var AXIOS_TIMEOUT = 100000;
-
-// var source = CancelToken.source();
+// const source = CancelToken.source();
 
 // setTimeout(() => {
 //   source.cancel();
@@ -37,12 +30,6 @@ var USE_LOCAL = false;
 AVAILABILITY_API_URL = USE_LOCAL ? `http://localhost:${PORT_AVAILABILITY}` : `http://ec2-54-149-117-186.us-west-2.compute.amazonaws.com:5001`;
 USERS_API_URL = USE_LOCAL ? `http://localhost:${PORT_USERS}` : `http://ec2-52-24-37-226.us-west-2.compute.amazonaws.com:5007`;
 PHOTOS_API_URL = USE_LOCAL ? `http://localhost:${PORT_PHOTOS}` : `http://ec2-18-223-109-128.us-east-2.compute.amazonaws.com:5005`;
-
-
-app.use(cors());
-app.use(express.static(__dirname + '/../client'));
-
-app.use('/rooms/:id', express.static(__dirname + '/../client'));
 
 
 app.get('/photos-service.js', (req, res, next) => {
