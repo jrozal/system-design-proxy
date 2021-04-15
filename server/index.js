@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -5,7 +6,6 @@ const path = require('path');
 const axios = require('axios');
 const app = express();
 //const CancelToken = axios.CancelToken;
-require('dotenv');
 require('newrelic');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,9 +27,9 @@ const USE_LOCAL = false;
 //   source.cancel();
 // }, AXIOS_TIMEOUT);
 
-AVAILABILITY_API_URL = USE_LOCAL ? `http://localhost:${PORT_AVAILABILITY}` : `http://ec2-54-149-117-186.us-west-2.compute.amazonaws.com:5001`;
-USERS_API_URL = USE_LOCAL ? `http://localhost:${PORT_USERS}` : `http://ec2-52-24-37-226.us-west-2.compute.amazonaws.com:5007`;
-PHOTOS_API_URL = USE_LOCAL ? `http://localhost:${PORT_PHOTOS}` : `http://ec2-18-223-109-128.us-east-2.compute.amazonaws.com:5005`;
+// AVAILABILITY_API_URL = USE_LOCAL ? `http://localhost:${PORT_AVAILABILITY}` : `http://ec2-54-149-117-186.us-west-2.compute.amazonaws.com:5001`;
+// USERS_API_URL = USE_LOCAL ? `http://localhost:${PORT_USERS}` : `http://ec2-52-24-37-226.us-west-2.compute.amazonaws.com:5007`;
+const PHOTOS_API_URL = USE_LOCAL ? `http://localhost:${PORT_PHOTOS}` : process.env.PHOTOS_API_URL;
 
 
 app.get('/photos-service.js', (req, res, next) => {
