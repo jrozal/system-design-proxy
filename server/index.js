@@ -5,7 +5,6 @@ const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
 const app = express();
-//const CancelToken = axios.CancelToken;
 require('newrelic');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,22 +17,11 @@ const PORT = 5000;
 const PORT_AVAILABILITY = 5001;
 const PORT_PHOTOS = 5005;
 const PORT_USERS = 5007;
-const USE_LOCAL = false;
-// const AXIOS_TIMEOUT = 100000;
+const USE_LOCAL = true;
 
-// const source = CancelToken.source();
-
-// setTimeout(() => {
-//   source.cancel();
-// }, AXIOS_TIMEOUT);
-
-// AVAILABILITY_API_URL = USE_LOCAL ? `http://localhost:${PORT_AVAILABILITY}` : `http://ec2-54-149-117-186.us-west-2.compute.amazonaws.com:5001`;
-// USERS_API_URL = USE_LOCAL ? `http://localhost:${PORT_USERS}` : `http://ec2-52-24-37-226.us-west-2.compute.amazonaws.com:5007`;
 const PHOTOS_API_URL = USE_LOCAL ? `http://localhost:${PORT_PHOTOS}` : process.env.PHOTOS_API_URL;
 
-
 app.get('/photos-service.js', (req, res, next) => {
-  console.log('requesting photos bundle');
   axios.get(`${PHOTOS_API_URL}/photos-service.js`)
   .then( (photosBundle) => {
     console.log('got a request to photos bundle');

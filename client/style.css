@@ -1,0 +1,64 @@
+.column {
+  float: left;
+}
+
+.left {
+  width: 60%;
+}
+
+.right {
+  width: 40%;
+  position: sticky;
+  top: 0;
+}
+
+.title-bar-container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.calendar2 {
+  padding-top: 30px;
+}
+
+.sticky-calendar {
+  margin-right: 20px;
+}
+
+.columns-container {
+  clear: both;
+  width: 100%;
+  height: 800px;
+}
+
+.user-container {
+  float: left;
+  clear: both;
+
+}
+
+.photo-container {
+  clear: both;
+  margin-bottom: 25px;
+
+}
+
+.more-places-container {
+
+  clear: both;
+}
+
+.footer-container {
+  float: left;
+  clear: both;
+  width: 100%;
+  border-top: 1px solid #DDDDDD;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
